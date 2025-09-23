@@ -1,3 +1,4 @@
+import { ReservationsPageComponent } from "./pages/reservations/reservations.component";
 import { Routes } from "@angular/router";
 import { canDeactivateSupportPage } from "./providers/can-deactivate-support.guard";
 import { checkTutorialGuard } from "./providers/check-tutorial.guard";

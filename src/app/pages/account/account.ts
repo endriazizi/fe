@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, inject } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from "@angular/common";
 import {
   AlertController,
   IonButtons,
@@ -12,25 +12,25 @@ import {
   IonMenuButton,
   IonTitle,
   IonToolbar,
-} from '@ionic/angular/standalone';
-import { UserService } from '../../providers/user.service';
+} from "@ionic/angular/standalone";
+import { UserService } from "../../providers/user.service";
 
 @Component({
-    selector: 'page-account',
-    templateUrl: 'account.html',
-    styleUrls: ['./account.scss'],
-    imports: [
-        IonHeader,
-        IonToolbar,
-        IonButtons,
-        IonMenuButton,
-        IonTitle,
-        IonContent,
-        IonItem,
-        IonList,
-        NgOptimizedImage,
-    ],
-    providers: [AlertController]
+  selector: "page-account",
+  templateUrl: "account.html",
+  styleUrls: ["./account.scss"],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonTitle,
+    IonContent,
+    IonItem,
+    IonList,
+    NgOptimizedImage,
+  ],
+  providers: [AlertController],
 })
 export class AccountPage implements AfterViewInit {
   private alertCtrl = inject(AlertController);
@@ -44,7 +44,7 @@ export class AccountPage implements AfterViewInit {
   }
 
   updatePicture() {
-    console.log('Clicked to update picture');
+    console.log("Clicked to update picture");
   }
 
   // Present an alert with the current username populated
@@ -52,11 +52,11 @@ export class AccountPage implements AfterViewInit {
   // clicking Cancel will close the alert and do nothing
   async changeUsername() {
     const alert = await this.alertCtrl.create({
-      header: 'Change Username',
+      header: "Change Username",
       buttons: [
-        'Cancel',
+        "Cancel",
         {
-          text: 'Ok',
+          text: "Ok",
           handler: (data: { username: string }) => {
             this.user.setUsername(data.username);
             this.getUsername();
@@ -65,10 +65,10 @@ export class AccountPage implements AfterViewInit {
       ],
       inputs: [
         {
-          type: 'text',
-          name: 'username',
+          type: "text",
+          name: "username",
           value: this.username,
-          placeholder: 'username',
+          placeholder: "username",
         },
       ],
     });
@@ -76,21 +76,21 @@ export class AccountPage implements AfterViewInit {
   }
 
   getUsername() {
-    this.user.getUsername().then(username => {
+    this.user.getUsername().then((username) => {
       this.username = username;
     });
   }
 
   changePassword() {
-    console.log('Clicked to change password');
+    console.log("Clicked to change password");
   }
 
   logout() {
     this.user.logout();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl("/login");
   }
 
   support() {
-    this.router.navigateByUrl('/support');
+    this.router.navigateByUrl("/support");
   }
 }

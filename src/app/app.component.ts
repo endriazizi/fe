@@ -88,6 +88,11 @@ export class AppComponent implements OnInit {
       icon: "calendar",
     },
     {
+      title: "Reservations",
+      url: "/app/tabs/reservations",
+      icon: "calendar",
+    },
+    {
       title: "Speakers",
       url: "/app/tabs/speakers",
       icon: "people",
