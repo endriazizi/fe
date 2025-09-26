@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { AddReservationComponent } from "./add-reservation/add-reservation.component";
 import { ReservationsTableComponent } from "./reservations-table/reservations-table.component";
 import { Router } from "@angular/router";
@@ -46,6 +46,7 @@ import {
   ModalController,
   ToastController,
 } from "@ionic/angular/standalone";
+import { Reservation } from "../../models/reservation.model";
 
 @Component({
   selector: "app-reservations",
@@ -62,8 +63,21 @@ import {
     IonButtons,
     IonMenuButton,
     IonMenuButton,
+    ReservationsTableComponent,
   ],
 })
 export class ReservationsPageComponent {
-  private router = inject(Router);
+  @ViewChild("table") table!: ReservationsTableComponent;
+
+  // Questo metodo viene chiamato quando AddReservation emette `added`
+  onNewReservation(reservation: Reservation) {
+    console.log("📌 Nuova prenotazione ricevuta dal form:", reservation);
+
+    // due opzioni:
+    // 1. Aggiorni direttamente la tabella aggiungendo alla lista
+    // this.table.reservations.push(reservation);
+
+    // 2. Più pulito: ricarichi dal backend
+    this.table.loadReservations();
+  }
 }

@@ -19,16 +19,21 @@ import {
   IonRow,
 } from "@ionic/angular/standalone";
 import { IonicModule, IonLabel, IonList } from "@ionic/angular";
+import { EditReservationComponent } from "../edit-reservation/edit-reservation.component";
 
 @Component({
   selector: "app-reservations-table",
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, EditReservationComponent],
   templateUrl: "./reservations-table.component.html",
   styleUrl: "./reservations-table.component.css",
 })
 export class ReservationsTableComponent implements OnInit {
   reservations: Reservation[] = [];
   loading = false;
+
+  // Per gestione modal
+  editOpen = false;
+  selectedReservation: Reservation | null = null;
 
   constructor(private reservationService: ReservationService) {}
 
@@ -47,5 +52,25 @@ export class ReservationsTableComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+  deleteReservation(id: number) {
+    this.reservationService.delete(id).subscribe({
+      next: () => {
+        console.log(`🗑️ Prenotazione ${id} eliminata`);
+        this.loadReservations();
+      },
+      error: (err) => console.error("❌ Errore eliminazione prenotazione", err),
+    });
+  }
+
+  openEdit(reservation: Reservation) {
+    this.selectedReservation = { ...reservation }; // clone
+    this.editOpen = true;
+  }
+
+  onUpdated(updated: Reservation) {
+    console.log("✏️ Prenotazione aggiornata:", updated);
+    this.editOpen = false;
+    this.loadReservations();
   }
 }

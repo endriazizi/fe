@@ -1,16 +1,44 @@
-<!-- <ion-card-header>
-  <ion-card-title>📋 Prenotazioni</ion-card-title>
-</ion-card-header>
-<ion-card-content>
-  <ion-list *ngIf="!loading; else loadingTpl">
-    <ion-item *ngFor="let r of reservations">
-      <ion-label>
-        🏠 {{ r.room_name }} | 👤 {{ r.user_name }} | 📅
-        {{ r.date_reservation }} ⏰ {{ r.time_reservation }}
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <ng-template #loadingTpl>
-    <ion-item>📡 Caricamento prenotazioni...</ion-item>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>📋 Prenotazioni</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-spinner *ngIf="loading"></ion-spinner>
+
+    <ion-list *ngIf="!loading">
+      <ion-item *ngFor="let r of reservations">
+        <ion-label>
+          <h3>{{ r.user_name }} ({{ r.room_name }})</h3>
+          <p>{{ r.date_reservation }} {{ r.time_reservation }}</p>
+          <p *ngIf="r.occasion">🎉 {{ r.occasion }}</p>
+        </ion-label>
+
+        <ion-buttons slot="end">
+          <ion-button color="medium" (click)="openEdit(r)">
+            Modifica
+          </ion-button>
+          <ion-button color="danger" (click)="deleteReservation(r.id!)">
+            Elimina
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="!loading && reservations.length === 0">
+      Nessuna prenotazione
+    </div>
+  </ion-card-content>
+</ion-card>
+
+<!-- Modal edit -->
+<ion-modal [isOpen]="editOpen" (ionModalDidDismiss)="editOpen = false">
+  <ng-template>
+    <app-edit-reservation
+      [reservation]="selectedReservation"
+      (updated)="onUpdated($event)"
+      (cancel)="editOpen = false"
+    >
+    </app-edit-reservation>
   </ng-template>
-</ion-card-content> -->
+</ion-modal>

@@ -1,20 +1,3 @@
-<!-- <app-add-reservation (added)="table.loadReservations()"></app-add-reservation>
-
-<ion-row>
-  <ion-col size="6">
-    <ion-button expand="block" (click)="printAllInBlock()">
-      🖨 Stampa tutto (blocco)
-    </ion-button>
-  </ion-col>
-  <ion-col size="6">
-    <ion-button expand="block" color="danger" (click)="printEachReservation()">
-      🖨 Stampa singola (taglio)
-    </ion-button>
-  </ion-col>
-</ion-row>
-
-<app-reservations-table #table></app-reservations-table> -->
-
 <ion-content>
   <ion-header class="ion-no-border">
     <ion-toolbar>
@@ -32,6 +15,8 @@
       </ion-buttons> -->
     </ion-toolbar>
   </ion-header>
+  <app-add-reservation (added)="table.loadReservations()"></app-add-reservation>
 
-  <app-add-reservation></app-add-reservation>
+  <app-reservations-table #table></app-reservations-table>
+  <!-- mettere import e viewchild nel ts relativo file tabella prenotazioni e richiamare la funzione loadReservations dopo aver aggiunto una prenotazione -->
 </ion-content>

@@ -7,7 +7,7 @@ import { Reservation } from "../models/reservation.model";
 @Injectable({ providedIn: "root" })
 export class ReservationService {
   //   private baseUrl = `${API_BASE_URL}/reservations`;
-  API_BASE_URL = "http://dev.endriazizi.com/api/v1";
+  API_BASE_URL = "https://dev.endriazizi.com/api/v1";
   private baseUrl = `${this.API_BASE_URL}/reservations`;
 
   constructor(private http: HttpClient) {}
