@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/tutorial/tutorial.scss"],
+  "sourcesContent": ["ion-toolbar {\r\n  --background: transparent;\r\n}\r\n\r\nion-content {\r\n  --overflow: hidden;\r\n}\r\n\r\n.slide-container {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 100%);\r\n  grid-template-rows: 1fr;\r\n\r\n  height: 100%;\r\n\r\n  overflow: scroll;\r\n  scroll-snap-type: x mandatory;\r\n}\r\n\r\n.slide {\r\n  display: flex;\r\n\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n\r\n  width: 100%;\r\n\r\n  text-align: center;\r\n\r\n  scroll-snap-align: center;\r\n  scroll-snap-stop: always;\r\n}\r\n\r\n.slide-title {\r\n  margin-top: 2.8rem;\r\n}\r\n\r\n.slide-image {\r\n  max-width: 80%;\r\n  max-height: 50%;\r\n\r\n  margin: -5vh 0 0;\r\n  pointer-events: none;\r\n}\r\n\r\nb {\r\n  font-weight: 500;\r\n}\r\n\r\np {\r\n  padding: 0 40px;\r\n\r\n  color: var(--ion-color-step-600, #60646b);\r\n\r\n  font-size: 14px;\r\n\r\n  line-height: 1.5;\r\n\r\n  b {\r\n    color: var(--ion-text-color, #000000);\r\n  }\r\n}\r\n"],
+  "mappings": "AAAA,YACE,cAAA,YAGF,YACE,YAAA,OAGF,CAAA,gBACE,QAAA,KACA,sBAAA,OAAA,CAAA,CAAA,MACA,mBAAA,IAEA,OAAA,KAEA,SAAA,OACA,iBAAA,EAAA,UAGF,CAAA,MACE,QAAA,KAEA,eAAA,OACA,YAAA,OACA,gBAAA,OAEA,MAAA,KAEA,WAAA,OAEA,kBAAA,OACA,iBAAA,OAGF,CAAA,YACE,WAAA,OAGF,CAAA,YACE,UAAA,IACA,WAAA,IAxCF,OA0CE,KAAA,EAAA,EACA,eAAA,KAGF,EACE,YAAA,IAGF,EAlDA,QAmDE,EAAA,KAEA,MAAA,IAAA,oBAAA,EAAA,SAEA,UAAA,KAEA,YAAA,IAEA,EAAA,EACE,MAAA,IAAA,gBAAA,EAAA",
+  "names": []
+}

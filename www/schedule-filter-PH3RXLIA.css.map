@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/schedule-filter/schedule-filter.scss"],
+  "sourcesContent": ["/*\r\n * Material Design\r\n */\r\n\r\n.md ion-toolbar ion-button {\r\n  letter-spacing: 0;\r\n\r\n  text-transform: capitalize;\r\n}\r\n\r\n.md ion-checkbox {\r\n  --checkbox-background-checked: transparent;\r\n  --border-color: transparent;\r\n  --border-color-checked: transparent;\r\n  --checkmark-color: var(--ion-color-primary);\r\n}\r\n\r\n.md ion-list {\r\n  background: inherit;\r\n}\r\n\r\n/*\r\n * iOS\r\n */\r\n\r\n.ios ion-list-header {\r\n  margin-top: 10px;\r\n}\r\n\r\n.ios ion-checkbox {\r\n  color: var(--ion-color-primary);\r\n}\r\n"],
+  "mappings": "AAIA,CAAA,GAAA,YAAA,WACE,eAAA,EAEA,eAAA,WAGF,CANA,GAMA,aACE,+BAAA,YACA,gBAAA,YACA,wBAAA,YACA,mBAAA,IAAA,qBAGF,CAbA,GAaA,SACE,WAAA,QAOF,CAAA,IAAA,gBACE,WAAA,KAGF,CAJA,IAIA,aACE,MAAA,IAAA",
+  "names": []
+}

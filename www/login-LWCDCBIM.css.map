@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/login/login.scss"],
+  "sourcesContent": [".login-logo {\r\n  min-height: 200px;\r\n\r\n  padding: 20px 0;\r\n\r\n  text-align: center;\r\n}\r\n\r\n.login-logo img {\r\n  max-width: 150px;\r\n}\r\n\r\n.login-form {\r\n  padding: 16px;\r\n}\r\n\r\nion-input {\r\n  margin-bottom: 10px;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,WACE,WAAA,MADF,QAGE,KAAA,EAEA,WAAA,OAGF,CARA,WAQA,IACE,UAAA,MAGF,CAAA,WAZA,QAaE,KAGF,UACE,cAAA",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/support/support.scss"],
+  "sourcesContent": [".support-logo {\r\n  min-height: 200px;\r\n\r\n  padding: 20px 0;\r\n\r\n  text-align: center;\r\n}\r\n\r\n.support-logo img {\r\n  max-width: 150px;\r\n}\r\n\r\n.list {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.support-form {\r\n  padding: 16px;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,aACE,WAAA,MADF,QAGE,KAAA,EAEA,WAAA,OAGF,CARA,aAQA,IACE,UAAA,MAGF,CAAA,KACE,cAAA,EAGF,CAAA,aAhBA,QAiBE",
+  "names": []
+}

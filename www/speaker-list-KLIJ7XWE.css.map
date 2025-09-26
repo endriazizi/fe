@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/speaker-list/speaker-list.scss"],
+  "sourcesContent": [".speaker-card {\r\n  display: flex;\r\n\r\n  flex-direction: column;\r\n}\r\n\r\n/* Due to the fact the cards are inside of columns the margins don't overlap\r\n * properly so we want to remove the extra margin between cards\r\n */\r\nion-col:not(:last-of-type) .speaker-card {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.speaker-card .speaker-item {\r\n  --min-height: 85px;\r\n}\r\n\r\n.speaker-card .speaker-item h2 {\r\n  font-size: 18px;\r\n  font-weight: 500;\r\n\r\n  letter-spacing: 0.02em;\r\n}\r\n\r\n.speaker-card .speaker-item p {\r\n  font-size: 13px;\r\n\r\n  letter-spacing: 0.02em;\r\n}\r\n\r\n.speaker-card ion-card-header {\r\n  padding: 0;\r\n}\r\n\r\n.speaker-card ion-card-content {\r\n  flex: 1 1 auto;\r\n\r\n  padding: 0;\r\n}\r\n\r\n.ios ion-list {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.md ion-list {\r\n  padding: 0;\r\n\r\n  border-top: 1px solid var(--ion-color-step-150, #d7d8da);\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,aACE,QAAA,KAEA,eAAA,OAMF,OAAA,KAAA,eAAA,CATA,aAUE,cAAA,EAGF,CAbA,aAaA,CAAA,aACE,cAAA,KAGF,CAjBA,aAiBA,CAJA,aAIA,GACE,UAAA,KACA,YAAA,IAEA,eAAA,MAGF,CAxBA,aAwBA,CAXA,aAWA,EACE,UAAA,KAEA,eAAA,MAGF,CA9BA,aA8BA,gBA9BA,QA+BE,EAGF,CAlCA,aAkCA,iBACE,KAAA,EAAA,EAAA,KAnCF,QAqCE,EAGF,CAAA,IAAA,SACE,cAAA,KAGF,CAAA,GAAA,SA5CA,QA6CE,EAEA,WAAA,IAAA,MAAA,IAAA,oBAAA,EAAA",
+  "names": []
+}

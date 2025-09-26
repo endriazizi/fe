@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/reservations/add-reservation/add-reservation.component.css"],
+  "sourcesContent": [".login-logo {\r\n  min-height: 200px;\r\n\r\n  padding: 20px 0;\r\n\r\n  text-align: center;\r\n}\r\n\r\n.login-logo img {\r\n  max-width: 150px;\r\n}\r\n\r\n.login-form {\r\n  padding: 16px;\r\n}\r\n\r\nion-input {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.time-card {\r\n  cursor: pointer;\r\n  transition: transform 0.1s, box-shadow 0.1s;\r\n}\r\n\r\n.time-card.selected {\r\n  background-color: #3880ff;\r\n  color: white;\r\n}\r\n\r\n.time-card:hover {\r\n  transform: scale(1.05);\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\r\n}\r\n"],
+  "mappings": "AAAA,CAAC,WACC,WAAY,MADd,QAGW,KAAK,EAEd,WAAY,MACd,CAEA,CARC,WAQW,IACV,UAAW,KACb,CAEA,CAAC,WAZD,QAaW,IACX,CAEA,UACE,cAAe,IACjB,CAEA,CAAC,UACC,OAAQ,QACR,WAAY,UAAU,GAAI,CAAE,WAAW,GACzC,CAEA,CALC,SAKS,CAAC,SACT,iBAAkB,QAClB,MAAO,IACT,CAEA,CAVC,SAUS,OACR,UAAW,MAAM,MACjB,WAAY,EAAE,IAAI,IAAI,KACxB",
+  "names": []
+}
