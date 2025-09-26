@@ -31,26 +31,41 @@
           </ion-col>
         </ion-row>
 
-        <!-- DATA -->
-        <ion-item>
-          <ion-label>Seleziona Data</ion-label>
-          <ion-datetime-button datetime="datePicker"></ion-datetime-button>
-        </ion-item>
-        <ion-modal [keepContentsMounted]="true">
-          <ng-template>
-            <ion-datetime
-              id="datePicker"
-              presentation="date"
-              locale="it-IT"
-              [value]="today"
-              (ionChange)="onDateChange($event)"
-            ></ion-datetime>
-          </ng-template>
-        </ion-modal>
-        <ion-item>
-          <ion-label>Data/Ora selezionata</ion-label>
-          <ion-text>{{ combinedDateTime }}</ion-text>
-        </ion-item>
+        <b
+          >No change for xs breakpoint, push 1st column & pull 2nd column for sm
+          and up</b
+        >
+        <ion-grid>
+          <ion-row>
+            <ion-col push-sm="6">
+              <!-- DATA -->
+              <ion-item>
+                <ion-label>Seleziona Data</ion-label>
+                <ion-datetime-button
+                  datetime="datePicker"
+                ></ion-datetime-button>
+              </ion-item>
+              <ion-modal [keepContentsMounted]="true">
+                <ng-template>
+                  <ion-datetime
+                    id="datePicker"
+                    presentation="date"
+                    locale="it-IT"
+                    [value]="today"
+                    (ionChange)="onDateChange($event)"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-modal>
+            </ion-col>
+            <ion-col pull-sm="6">
+              <ion-item>
+                <ion-label>Data/Ora selezionata</ion-label>
+                <ion-text>{{ combinedDateTime }}</ion-text>
+              </ion-item></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+
         <!-- Lista orari come cards responsive -->
         <ion-grid>
           <ion-row>
@@ -68,32 +83,36 @@
           </ion-row>
         </ion-grid>
 
-        <ion-row>
-          <ion-col size="12" size-md="6">
-            <ion-item>
-              <ion-label position="stacked">Occasione</ion-label>
-              <ion-select formControlName="occasion">
-                <ion-select-option value="Compleanno"
-                  >🎉 Compleanno</ion-select-option
-                >
-                <ion-select-option value="Cena di lavoro"
-                  >💼 Cena di lavoro</ion-select-option
-                >
-                <ion-select-option value="Laurea">🎓 Laurea</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12" size-md="6">
-            <!-- Intolleranze  -->
-            <ion-item>
-              <ion-label position="stacked">Intolleranze</ion-label>
-              <ion-textarea
-                formControlName="intolerances"
-                placeholder="Es. lattosio"
-              ></ion-textarea>
-            </ion-item>
-          </ion-col>
-        </ion-row>
+        <b>Column 1 has <code>offset</code> set to <code>"4"</code></b>
+        <ion-grid>
+          <ion-row>
+            <ion-col push-sm="6">
+              <ion-item>
+                <ion-label position="stacked">Occasione</ion-label>
+                <ion-select formControlName="occasion">
+                  <ion-select-option value="Compleanno"
+                    >🎉 Compleanno</ion-select-option
+                  >
+                  <ion-select-option value="Cena di lavoro"
+                    >💼 Cena di lavoro</ion-select-option
+                  >
+                  <ion-select-option value="Laurea"
+                    >🎓 Laurea</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col pull-sm="6"
+              ><!-- Intolleranze  -->
+              <ion-item>
+                <ion-label position="stacked">Intolleranze</ion-label>
+                <ion-textarea
+                  formControlName="intolerances"
+                  placeholder="Es. lattosio"
+                ></ion-textarea> </ion-item
+            ></ion-col>
+          </ion-row>
+        </ion-grid>
 
         <!-- Selezione stanza -->
         <ion-row *ngIf="rooms.length > 0">

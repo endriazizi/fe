@@ -57,6 +57,8 @@ reservations
 
 ng g c shared/components/navbar --type=component --dry-run
 
+ionic serve --host=0.0.0.0 --port=8100 --external
+
 ng g c features/auth--type=component
 
 ng g s core/services/auth --skip-tests --type=service --dry-run
