@@ -1,1 +1,37 @@
-<p>reservations works!</p>
+<!-- <app-add-reservation (added)="table.loadReservations()"></app-add-reservation>
+
+<ion-row>
+  <ion-col size="6">
+    <ion-button expand="block" (click)="printAllInBlock()">
+      🖨 Stampa tutto (blocco)
+    </ion-button>
+  </ion-col>
+  <ion-col size="6">
+    <ion-button expand="block" color="danger" (click)="printEachReservation()">
+      🖨 Stampa singola (taglio)
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+<app-reservations-table #table></app-reservations-table> -->
+
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <!-- <ion-buttons slot="end">
+        <ion-button (click)="presentPopover($event)">
+          <ion-icon
+            slot="icon-only"
+            ios="ellipsis-horizontal"
+            md="ellipsis-vertical"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+  </ion-header>
+
+  <app-add-reservation></app-add-reservation>
+</ion-content>

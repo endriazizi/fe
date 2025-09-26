@@ -1,1 +1,125 @@
-<p>add-reservation works!</p>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>📝 Nuova Prenotazione</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <!-- Stato caricamento stanze -->
+    <ion-item *ngIf="loadingRooms"> 📡 Caricamento stanze... </ion-item>
+    <!-- Form collegato al FormGroup -->
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <ion-grid>
+        <!-- Nome -->
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <ion-item>
+              <ion-label position="stacked">Nome</ion-label>
+              <ion-input
+                formControlName="user_name"
+                placeholder="Mario Rossi"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <ion-item>
+              <ion-label position="stacked">Telefono</ion-label>
+              <ion-input
+                formControlName="phone"
+                type="tel"
+                placeholder="1234567890"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <!-- DATA -->
+        <ion-item>
+          <ion-label>Seleziona Data</ion-label>
+          <ion-datetime-button datetime="datePicker"></ion-datetime-button>
+        </ion-item>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime
+              id="datePicker"
+              presentation="date"
+              locale="it-IT"
+              [value]="today"
+              (ionChange)="onDateChange($event)"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+        <ion-item>
+          <ion-label>Data/Ora selezionata</ion-label>
+          <ion-text>{{ combinedDateTime }}</ion-text>
+        </ion-item>
+        <!-- Lista orari come cards responsive -->
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" size-md="3" *ngFor="let slot of timeSlots">
+              <ion-card
+                class="time-card"
+                [ngClass]="{ selected: slot === selectedTime }"
+                (click)="selectTime(slot)"
+              >
+                <ion-card-content class="ion-text-center">
+                  {{ slot }}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <ion-item>
+              <ion-label position="stacked">Occasione</ion-label>
+              <ion-select formControlName="occasion">
+                <ion-select-option value="Compleanno"
+                  >🎉 Compleanno</ion-select-option
+                >
+                <ion-select-option value="Cena di lavoro"
+                  >💼 Cena di lavoro</ion-select-option
+                >
+                <ion-select-option value="Laurea">🎓 Laurea</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <!-- Intolleranze  -->
+            <ion-item>
+              <ion-label position="stacked">Intolleranze</ion-label>
+              <ion-textarea
+                formControlName="intolerances"
+                placeholder="Es. lattosio"
+              ></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <!-- Selezione stanza -->
+        <ion-row *ngIf="rooms.length > 0">
+          <ion-col size="12" size-md="6">
+            <ion-item>
+              <ion-label position="stacked">Stanza</ion-label>
+              <ion-select
+                formControlName="room_id"
+                placeholder="Seleziona stanza"
+              >
+                <ion-select-option *ngFor="let r of rooms" [value]="r.id">
+                  🏠 {{ r.name }} ({{ r.seats }} posti)
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <!-- Bottone submit -->
+        <ion-row>
+          <ion-col size="12">
+            <ion-button type="submit" expand="block" [disabled]="submitting">
+              {{ submitting ? "⏳ Invio..." : "Prenota" }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>

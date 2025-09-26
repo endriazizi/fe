@@ -54,7 +54,10 @@
           },
           "defaultConfiguration": "",
           "options": {
-            "allowedCommonJsDependencies": ["localforage", "leaflet"],
+            "allowedCommonJsDependencies": [
+              "localforage",
+              "leaflet"
+            ],
             "assets": [
               {
                 "glob": "**/*",
@@ -76,7 +79,9 @@
               "base": "www",
               "browser": ""
             },
-            "polyfills": ["src/polyfills.ts"],
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "scripts": [],
             "sourceMap": true,
             "styles": [
@@ -96,7 +101,10 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.html", "src/**/*.ts"]
+            "lintFilePatterns": [
+              "src/**/*.html",
+              "src/**/*.ts"
+            ]
           }
         },
         "serve": {
@@ -108,6 +116,7 @@
             }
           },
           "options": {
+            "proxyConfig": "src/proxy.conf.json", // Ensure this is here
             "buildTarget": "app:build",
             "disableHostCheck": true
           }

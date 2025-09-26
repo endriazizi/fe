@@ -40,6 +40,8 @@ footer/
 footer.component.ts
 footer.component.html
 
+ionic serve -- --proxy-config proxy.conf.json
+
 ng g c features/booking/pages/booking-tabs --skip-tests --type=component --dry-run
 
 ng g c features/booking/pages/order-menu --type=component --dry-run

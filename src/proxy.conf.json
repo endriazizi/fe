@@ -1,0 +1,10 @@
+{
+    "/api": {
+        "target": "http://dev.endriazizi.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}

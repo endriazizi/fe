@@ -62,9 +62,6 @@ import { UserService } from "./providers/user.service";
     IonContent,
     IonMenu,
     IonSplitPane,
-    IonTitle,
-    IonHeader,
-    IonToolbar,
     IonListHeader,
     IonApp,
     FormsModule,
@@ -88,7 +85,7 @@ export class AppComponent implements OnInit {
       icon: "calendar",
     },
     {
-      title: "Reservations",
+      title: "Reservations!!!!",
       url: "/app/tabs/reservations",
       icon: "calendar",
     },
