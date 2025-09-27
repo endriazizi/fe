@@ -1,2 +1,0 @@
-import{f as r,g as i}from"./chunk-6FQRID3T.js";import{b as s}from"./chunk-CHFUN4OZ.js";import{j as a,k as c}from"./chunk-YV73U6RK.js";import{h as n}from"./chunk-FXBCZJCY.js";var h=()=>{let e=window;e.addEventListener("statusTap",()=>{a(()=>{let m=e.innerWidth,d=e.innerHeight,o=document.elementFromPoint(m/2,d/2);if(!o)return;let t=r(o);t&&new Promise(l=>s(t,l)).then(()=>{c(()=>n(null,null,function*(){t.style.setProperty("--overflow","hidden"),yield i(t,300),t.style.removeProperty("--overflow")}))})})})};export{h as startStatusTap};
-//# sourceMappingURL=chunk-U4GF6A4A.js.map

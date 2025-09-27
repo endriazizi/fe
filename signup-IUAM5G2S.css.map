@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/signup/signup.scss"],
-  "sourcesContent": [".signup-logo {\r\n  min-height: 200px;\r\n\r\n  padding: 20px 0;\r\n\r\n  text-align: center;\r\n}\r\n\r\n.signup-logo img {\r\n  max-width: 150px;\r\n}\r\n\r\n.signup-form {\r\n  padding: 16px;\r\n}\r\n\r\nion-input {\r\n  margin-bottom: 10px;\r\n}\r\n"],
-  "mappings": "AAAA,CAAA,YACE,WAAA,MADF,QAGE,KAAA,EAEA,WAAA,OAGF,CARA,YAQA,IACE,UAAA,MAGF,CAAA,YAZA,QAaE,KAGF,UACE,cAAA",
-  "names": []
-}
