@@ -53,6 +53,7 @@ export class ReservationsTableComponent implements OnInit {
       },
     });
   }
+
   deleteReservation(id: number) {
     this.reservationService.delete(id).subscribe({
       next: () => {

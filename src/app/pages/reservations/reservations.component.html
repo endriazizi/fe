@@ -4,19 +4,27 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <!-- <ion-buttons slot="end">
-        <ion-button (click)="presentPopover($event)">
-          <ion-icon
-            slot="icon-only"
-            ios="ellipsis-horizontal"
-            md="ellipsis-vertical"
-          ></ion-icon>
+
+      <ion-title>Prenotazioni</ion-title>
+
+      <ion-buttons slot="end">
+        <!-- Bottone di stampa -->
+        <ion-button (click)="printReservations()">
+          <ion-icon slot="icon-only" name="print-outline"></ion-icon>
         </ion-button>
-      </ion-buttons> -->
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <!-- Form di aggiunta prenotazione -->
   <app-add-reservation (added)="table.loadReservations()"></app-add-reservation>
 
+  <!-- Tabella delle prenotazioni -->
   <app-reservations-table #table></app-reservations-table>
-  <!-- mettere import e viewchild nel ts relativo file tabella prenotazioni e richiamare la funzione loadReservations dopo aver aggiunto una prenotazione -->
+  <!-- Floating Print Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="printReservations()">
+      <ion-icon name="print-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

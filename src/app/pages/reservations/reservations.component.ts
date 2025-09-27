@@ -5,10 +5,10 @@ import { Router } from "@angular/router";
 import { inject } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { IonButton, IonCol, IonRow } from "@ionic/angular/standalone";
 import { RouterLink } from "@angular/router";
 
 import {
+  IonButton,
   IonButtons,
   IonContent,
   IonDatetime,
@@ -24,29 +24,14 @@ import {
   IonText,
   IonToolbar,
   PopoverController,
-} from "@ionic/angular/standalone";
-import {
-  AlertController,
-  Config,
+  IonTitle,
   IonFab,
   IonFabButton,
-  IonFabList,
-  IonItemDivider,
-  IonItemGroup,
-  IonItemOption,
-  IonItemOptions,
-  IonItemSliding,
-  IonListHeader,
-  IonRouterOutlet,
-  IonSearchbar,
-  IonSegment,
-  IonSegmentButton,
-  IonTitle,
-  LoadingController,
-  ModalController,
   ToastController,
 } from "@ionic/angular/standalone";
+
 import { Reservation } from "../../models/reservation.model";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-reservations",
@@ -63,21 +48,76 @@ import { Reservation } from "../../models/reservation.model";
     IonButtons,
     IonMenuButton,
     IonMenuButton,
+    IonTitle,
+    IonIcon,
+    IonButton,
+    IonFab,
+    IonFabButton,
+
     ReservationsTableComponent,
   ],
 })
 export class ReservationsPageComponent {
   @ViewChild("table") table!: ReservationsTableComponent;
 
-  // Questo metodo viene chiamato quando AddReservation emette `added`
+  // --- Inject HttpClient ---
+  constructor(private http: HttpClient, private toastCtrl: ToastController) {} // <--- aggiungi questo
+
+  // // Questo metodo viene chiamato quando AddReservation emette `added`
+  // onNewReservation(reservation: Reservation) {
+  //   console.log("📌 Nuova prenotazione ricevuta dal form:", reservation);
+
+  //   // due opzioni:
+  //   // 1. Aggiorni direttamente la tabella aggiungendo alla lista
+  //   // this.table.reservations.push(reservation);
+
+  //   // 2. Più pulito: ricarichi dal backend
+  //   this.table.loadReservations();
+  // }
+
   onNewReservation(reservation: Reservation) {
-    console.log("📌 Nuova prenotazione ricevuta dal form:", reservation);
-
-    // due opzioni:
-    // 1. Aggiorni direttamente la tabella aggiungendo alla lista
-    // this.table.reservations.push(reservation);
-
-    // 2. Più pulito: ricarichi dal backend
+    console.log("📌 Nuova prenotazione:", reservation);
     this.table.loadReservations();
+  }
+
+  async printReservations() {
+    if (!this.table || !this.table.reservations?.length) {
+      this.showToast("⚠️ Nessuna prenotazione da stampare", "warning");
+      return;
+    }
+
+    const reservations: Reservation[] = this.table.reservations;
+
+    try {
+      const res = await this.http
+        .post(
+          "https://dev.endriazizi.com/api/v1/print-reservations",
+          reservations,
+          { responseType: "json" }
+        )
+        .toPromise();
+
+      console.log("✅ Stampa inviata con successo", res);
+      this.showToast("📄 Stampa inviata con successo!", "success");
+    } catch (error: any) {
+      console.error("❌ Errore HTTP durante la stampa:", error);
+      this.showToast(
+        "❌ Errore durante la stampa: " + (error.message || "Unknown error"),
+        "danger"
+      );
+    }
+  }
+
+  private async showToast(
+    message: string,
+    color: "success" | "danger" | "warning" = "success"
+  ) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 2500,
+      color,
+      position: "top",
+    });
+    toast.present();
   }
 }
