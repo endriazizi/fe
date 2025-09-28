@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { API_BASE_URL } from "../../../config";
+// import { API_BASE_URL } from "../../../config";
 import { Observable } from "rxjs";
 import { ReservationService } from "../../../services/reservation.service";
 
@@ -23,6 +23,7 @@ import { EditReservationComponent } from "../edit-reservation/edit-reservation.c
 
 @Component({
   selector: "app-reservations-table",
+  standalone: true,
   imports: [IonicModule, CommonModule, EditReservationComponent],
   templateUrl: "./reservations-table.component.html",
   styleUrl: "./reservations-table.component.css",

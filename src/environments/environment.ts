@@ -2,10 +2,13 @@
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
+
 export const environment = {
   production: false,
+  apiUrl: "https://dev.endriazizi.com", // Uses proxy in development
+  // baseUrl: "http://localhost:3000", // Ionic dev server
+  version: "1.0.0",
 };
-
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

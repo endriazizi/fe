@@ -116,7 +116,6 @@
             }
           },
           "options": {
-            "proxyConfig": "src/proxy.conf.json", // Ensure this is here
             "buildTarget": "app:build",
             "disableHostCheck": true
           }

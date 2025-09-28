@@ -5,20 +5,14 @@ import { IonicModule, ToastController } from "@ionic/angular";
 import { CommonModule, JsonPipe } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
-import { ReservationsPageComponent } from "../reservations.component";
 
 @Component({
   selector: "app-edit-reservation",
+  standalone: true,
   templateUrl: "./edit-reservation.component.html",
   styleUrls: ["./edit-reservation.component.css"],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    IonicModule,
-    JsonPipe,
-    FormsModule,
-    ReservationsPageComponent,
-  ],
+
+  imports: [CommonModule, ReactiveFormsModule, IonicModule, FormsModule],
 })
 export class EditReservationComponent {
   @Input() reservation!: Reservation;

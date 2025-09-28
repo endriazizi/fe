@@ -1,7 +1,10 @@
 import { Injectable } from "@angular/core";
 // const ThermalPrinter = require("node-thermal-printer").printer;
 // const PrinterTypes = require("node-thermal-printer").types;
-import { printer as ThermalPrinter, types as PrinterTypes } from "node-thermal-printer";
+import {
+  printer as ThermalPrinter,
+  types as PrinterTypes,
+} from "node-thermal-printer";
 
 @Injectable({ providedIn: "root" })
 export class PrinterService {
@@ -54,7 +57,7 @@ export class PrinterService {
 
       this.printer.alignLeft();
       this.printer.println(`🏠 Stanza: ${r.room_name}`);
-      this.printer.println(`👤 Cliente: ${r.user_name}`);
+      this.printer.println(`👤 Cliente: ${r.user_nome} ${r.user_cognome}`);
       this.printer.println(`📅 Data: ${r.date_reservation}`);
       this.printer.println(`⏰ Ora: ${r.time_reservation}`);
       if (r.occasion) this.printer.println(`🎉 Occasione: ${r.occasion}`);

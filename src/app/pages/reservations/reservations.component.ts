@@ -6,6 +6,7 @@ import { inject } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { RouterLink } from "@angular/router";
+import { environment } from "../../../environments/environment";
 
 import {
   IonButton,
@@ -90,11 +91,9 @@ export class ReservationsPageComponent {
 
     try {
       const res = await this.http
-        .post(
-          "https://dev.endriazizi.com/api/v1/print-reservations",
-          reservations,
-          { responseType: "json" }
-        )
+        .post(`${environment.apiUrl}/api/v1/print-reservations`, reservations, {
+          responseType: "json",
+        })
         .toPromise();
 
       console.log("✅ Stampa inviata con successo", res);

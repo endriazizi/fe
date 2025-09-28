@@ -1,3 +1,4 @@
+import { environment } from "./../../../../environments/environment";
 import { Component, EventEmitter, Output, OnInit } from "@angular/core";
 import {
   FormBuilder,
@@ -8,7 +9,7 @@ import {
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CommonModule, JsonPipe } from "@angular/common";
 import { IonicModule, ToastController } from "@ionic/angular";
-import { API_BASE_URL } from "../../../config";
+// import { API_BASE_URL } from "../../../config";
 
 @Component({
   selector: "app-add-reservation",
@@ -19,6 +20,7 @@ import { API_BASE_URL } from "../../../config";
 })
 export class AddReservationComponent implements OnInit {
   @Output() added = new EventEmitter();
+
   form: FormGroup;
   rooms: any[] = [];
   loadingRooms = true;
@@ -30,7 +32,7 @@ export class AddReservationComponent implements OnInit {
   combinedDateTime: string = "";
 
   readonly timeSlots: string[] = Array.from(
-    { length: 13 }, // Cambiato a 13 per coprire da 19:00 a 22:00
+    { length: 8 }, // Cambiato a 13 per coprire da 19:00 a 22:00
     (_, i) => {
       const hour = 19 + Math.floor(i / 4); // Inizia da 19 e incrementa per ora
       const min = (i % 4) * 15; // 0, 15, 30, 45 minuti
@@ -47,16 +49,30 @@ export class AddReservationComponent implements OnInit {
     private http: HttpClient,
     private toastCtrl: ToastController
   ) {
+    console.log(
+      "⏰ Orarithis.today, this.selectedTime);",
+      this.today,
+      "-",
+      this.selectedTime
+    );
+
     this.updateDateTime(this.today, this.selectedTime);
+
+    console.log(
+      "⏰ Orari disponibili this.updateDateTime(this.today, this.selectedTime);:",
+      this.updateDateTime(this.today, this.selectedTime)
+    );
     // inizializza il form
     this.form = this.fb.group({
-      user_name: ["", Validators.required],
-      phone: ["", Validators.required],
-      date_reservation: ["", Validators.required],
-      time_reservation: ["", Validators.required],
-      occasion: ["", Validators.required],
-      intolerances: [""],
-      room_id: ["", Validators.required],
+      user_nome: ["", Validators.required],
+      user_cognome: ["", Validators.required],
+      numero_persone: [1, Validators.required], // 👈 default = 1
+      date_reservation: [this.today, Validators.required], // 👈 default = oggi
+      time_reservation: [this.selectedTime, Validators.required], // 👈 default = 19:00
+      phone: ["", Validators.nullValidator],
+      occasion: ["Cena tra Amici", Validators.nullValidator],
+      intolerances: ["--", Validators.nullValidator],
+      room_id: [3, Validators.required],
     });
   }
 
@@ -68,6 +84,7 @@ export class AddReservationComponent implements OnInit {
     console.log("Initial Form Value:", this.form.value);
   }
 
+  personeOptions: number[] = Array.from({ length: 20 }, (_, i) => i + 1);
   formattedTime: string = "";
 
   formattedDate: string = "";
@@ -122,7 +139,7 @@ export class AddReservationComponent implements OnInit {
   generateTimes() {
     const times: string[] = [];
     let start = 7 * 60; // 07:00 in minuti
-    const end = 22 * 60; // 22:00 in minuti
+    const end = 20 * 60; // 22:00 in minuti
     while (start <= end) {
       const h = Math.floor(start / 60);
       const m = start % 60;
@@ -138,8 +155,8 @@ export class AddReservationComponent implements OnInit {
   loadRooms() {
     console.log("📡 Caricamento stanze...");
     this.loadingRooms = true;
-
-    this.http.get<any[]>(`${API_BASE_URL}/rooms`).subscribe({
+    // this.http.get(`${environment.apiUrl}/reservations`);
+    this.http.get<any[]>(`${environment.apiUrl}/api/v1/rooms`).subscribe({
       next: (r) => {
         this.rooms = r;
         this.loadingRooms = false;
@@ -160,7 +177,9 @@ export class AddReservationComponent implements OnInit {
 
   async submit() {
     console.log("📝 Invio form prenotazione", this.form.value);
+    console.log("⏰ this.form.invalid:", this.form.invalid);
 
+    console.log("⏰ form", this.form);
     if (this.form.invalid) {
       console.warn("⚠️ Form non valido!");
       const toast = await this.toastCtrl.create({
@@ -174,32 +193,34 @@ export class AddReservationComponent implements OnInit {
 
     this.submitting = true;
 
-    this.http.post(`${API_BASE_URL}/reservations`, this.form.value).subscribe({
-      next: async (res) => {
-        console.log("✅ Prenotazione inviata con successo", res);
-        this.submitting = false;
+    this.http
+      .post(`${environment.apiUrl}/api/v1/reservations`, this.form.value)
+      .subscribe({
+        next: async (res) => {
+          console.log("✅ Prenotazione inviata con successo", res);
+          this.submitting = false;
 
-        const toast = await this.toastCtrl.create({
-          message: "✅ Prenotazione creata con successo!",
-          duration: 2000,
-          color: "success",
-        });
-        toast.present();
+          const toast = await this.toastCtrl.create({
+            message: "✅ Prenotazione creata con successo!",
+            duration: 2000,
+            color: "success",
+          });
+          toast.present();
 
-        this.added.emit(res);
-        this.form.reset();
-      },
-      error: async (err) => {
-        console.error("❌ Errore invio prenotazione", err);
-        this.submitting = false;
+          this.added.emit(res);
+          this.form.reset();
+        },
+        error: async (err) => {
+          console.error("❌ Errore invio prenotazione", err);
+          this.submitting = false;
 
-        const toast = await this.toastCtrl.create({
-          message: "❌ Errore invio prenotazione",
-          duration: 2000,
-          color: "danger",
-        });
-        toast.present();
-      },
-    });
+          const toast = await this.toastCtrl.create({
+            message: "❌ Errore invio prenotazione",
+            duration: 2000,
+            color: "danger",
+          });
+          toast.present();
+        },
+      });
   }
 }

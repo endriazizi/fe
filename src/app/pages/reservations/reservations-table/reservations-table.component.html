@@ -9,7 +9,8 @@
     <ion-list *ngIf="!loading">
       <ion-item *ngFor="let r of reservations">
         <ion-label>
-          <h3>{{ r.user_name }} ({{ r.room_name }})</h3>
+          <h1>{{ r.user_nome }} {{ r.user_cognome }}</h1>
+          <h4>({{ r.room_name }})</h4>
           <p>{{ r.date_reservation }} {{ r.time_reservation }}</p>
           <p *ngIf="r.occasion">🎉 {{ r.occasion }}</p>
         </ion-label>
@@ -32,13 +33,11 @@
 </ion-card>
 
 <!-- Modal edit -->
-<ion-modal [isOpen]="editOpen" (ionModalDidDismiss)="editOpen = false">
+<ion-modal [isOpen]="editOpen" (ionModalDidDismiss)="editOpen = false" [breakpoints]="[0, 1]" [initialBreakpoint]="1"
+  (ionModalDidDismiss)="editOpen = false">
   <ng-template>
-    <app-edit-reservation
-      [reservation]="selectedReservation"
-      (updated)="onUpdated($event)"
-      (cancel)="editOpen = false"
-    >
+    <app-edit-reservation *ngIf="selectedReservation" [reservation]="selectedReservation" (updated)="onUpdated($event)"
+      (cancel)="editOpen = false">
     </app-edit-reservation>
   </ng-template>
 </ion-modal>

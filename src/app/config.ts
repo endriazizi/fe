@@ -1,6 +1,6 @@
 // export const API_BASE_URL = "http://localhost:4000/api/v1"; // locale
 
-export const API_BASE_URL = "https://dev.endriazizi.com/api/v1"; // locale
+// export const API_BASE_URL = "https://dev.endriazizi.com/api/v1"; // locale
 // In produzione puoi sostituire con:
 // export const API_BASE_URL = 'https://api.tuoprodotto.it/api/v1';
 

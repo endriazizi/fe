@@ -6,8 +6,8 @@ import {
 import {
   ɵɵdefineInjectable
 } from "./chunk-VBSVQOQP.js";
-import "./chunk-576P5TAG.js";
 import "./chunk-UQGLAMHP.js";
+import "./chunk-576P5TAG.js";
 import {
   Observable,
   __decorate,

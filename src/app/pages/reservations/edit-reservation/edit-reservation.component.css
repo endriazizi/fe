@@ -1,0 +1,17 @@
+ion-content {
+  border: 2px solid red; /* Per vedere i confini */
+  overflow: hidden;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+ion-content {
+  --overflow: hidden;
+
+  &::part(scroll) {
+    overflow: hidden;
+  }
+}

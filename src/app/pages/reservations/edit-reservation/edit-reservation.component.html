@@ -7,34 +7,44 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+
   <ion-item>
-    <ion-label position="floating">Cliente</ion-label>
-    <ion-input [(ngModel)]="reservation.user_name"></ion-input>
+    <ion-label position="floating">Stanza</ion-label>
+    <ion-input [(ngModel)]="reservation.room_id"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Numero Tavolo</ion-label>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="reservation.numero_persone"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="reservation.user_nome"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="floating">Numero Persone</ion-label>
+    <ion-input [(ngModel)]="reservation.numero_persone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Telefono</ion-label>
     <ion-input type="number" [(ngModel)]="reservation.phone"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Data</ion-label>
-    <ion-input
-      type="date"
-      [(ngModel)]="reservation.date_reservation"
-    ></ion-input>
+    <ion-input type="date" [(ngModel)]="reservation.date_reservation"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Ora</ion-label>
-    <ion-input
-      type="time"
-      [(ngModel)]="reservation.time_reservation"
-    ></ion-input>
+    <ion-input type="time" [(ngModel)]="reservation.time_reservation"></ion-input>
   </ion-item>
 
-  <ion-button expand="block" color="primary" (click)="save()"
-    >Aggiorna</ion-button
-  >
+  <ion-button expand="block" color="primary" (click)="save()">Aggiorna</ion-button>
 </ion-content>

@@ -13,48 +13,97 @@
           <ion-col size="12" size-md="6">
             <ion-item>
               <ion-label position="stacked">Nome</ion-label>
-              <ion-input
-                formControlName="user_name"
-                placeholder="Mario Rossi"
-              ></ion-input>
+              <ion-input formControlName="user_nome" placeholder="inserisci nome"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12" size-md="6">
+            <ion-item>
+              <ion-label position="stacked">Nome</ion-label>
+              <ion-input formControlName="user_cognome" placeholder="inserisci cognome"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col size="12" size-md="6">
             <ion-item>
               <ion-label position="stacked">Telefono</ion-label>
-              <ion-input
-                formControlName="phone"
-                type="tel"
-                placeholder="1234567890"
-              ></ion-input>
+              <ion-input formControlName="phone" type="tel" placeholder="es. 1234567890"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
 
-        <b
-          >No change for xs breakpoint, push 1st column & pull 2nd column for sm
-          and up</b
-        >
+        <!-- tre campi -->
+        <ion-grid>
+          <ion-row>
+            <!-- Occasione -->
+            <ion-col size="4">
+              <ion-item>
+                <ion-label position="stacked">Occasione</ion-label>
+                <ion-select formControlName="occasion">
+                  <ion-select-option value="Cena tra Amici">🎉 Cena tra Amici</ion-select-option>
+                  <ion-select-option value="Compleanno">🎉 Compleanno</ion-select-option>
+                  <ion-select-option value="Cena di lavoro">💼 Cena di lavoro</ion-select-option>
+                  <ion-select-option value="Laurea">🎓 Laurea</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+            <!-- Numero Persone -->
+            <ion-col size="4">
+              <ion-item>
+                <ion-label position="stacked">N.Persone</ion-label>
+                <ion-select formControlName="numero_persone" interface="popover" placeholder="Seleziona numero">
+                  <ion-select-option *ngFor="let n of personeOptions" [value]="n">
+                    {{ n }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+
+          </ion-row>
+        </ion-grid>
+        <!-- fine tre campi -->
+
+        <ion-grid>
+          <!-- Selezione stanza -->
+
+          <ion-col size="4" *ngIf="rooms.length > 0">
+            <ion-label position="stacked">Stanza</ion-label>
+            <ion-select formControlName="room_id" placeholder="Seleziona stanza">
+              <ion-select-option *ngFor="let r of rooms" [value]="r.id">
+                🏠 {{ r.name }} ({{ r.seats }} posti)
+              </ion-select-option>
+            </ion-select>
+
+          </ion-col>
+
+
+          <!-- Intolleranze -->
+          <ion-col size="4">
+            <!-- <ion-item>
+                <ion-label position="stacked">Intolleranze</ion-label>
+                <ion-textarea formControlName="intolerances"></ion-textarea>
+              </ion-item> -->
+            <ion-label position="stacked">Intolleranze</ion-label>
+            <ion-input formControlName="intolerances" placeholder="Es. lattosio">
+            </ion-input>
+          </ion-col>
+        </ion-grid>
+
+        <b>No change for xs breakpoint, push 1st column & pull 2nd column for sm
+          and up</b>
         <ion-grid>
           <ion-row>
             <ion-col push-sm="6">
               <!-- DATA -->
               <ion-item>
                 <ion-label>Seleziona Data</ion-label>
-                <ion-datetime-button
-                  datetime="datePicker"
-                ></ion-datetime-button>
+                <ion-datetime-button datetime="datePicker"></ion-datetime-button>
               </ion-item>
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime
-                    id="datePicker"
-                    presentation="date"
-                    locale="it-IT"
-                    [value]="today"
-                    (ionChange)="onDateChange($event)"
-                    style="width: 100%; height: 100%"
-                  ></ion-datetime>
+                  <ion-datetime id="datePicker" presentation="date" locale="it-IT" [value]="today"
+                    (ionChange)="onDateChange($event)" style="width: 100%; height: 100%"></ion-datetime>
                 </ng-template>
               </ion-modal>
             </ion-col>
@@ -62,8 +111,7 @@
               <ion-item>
                 <ion-label>Data/Ora selezionata</ion-label>
                 <ion-text>{{ combinedDateTime }}</ion-text>
-              </ion-item></ion-col
-            >
+              </ion-item></ion-col>
           </ion-row>
         </ion-grid>
 
@@ -71,11 +119,7 @@
         <ion-grid>
           <ion-row>
             <ion-col size="6" size-md="3" *ngFor="let slot of timeSlots">
-              <ion-card
-                class="time-card"
-                [ngClass]="{ selected: slot === selectedTime }"
-                (click)="selectTime(slot)"
-              >
+              <ion-card class="time-card" [ngClass]="{ selected: slot === selectedTime }" (click)="selectTime(slot)">
                 <ion-card-content class="ion-text-center">
                   {{ slot }}
                 </ion-card-content>
@@ -84,53 +128,18 @@
           </ion-row>
         </ion-grid>
 
-        <b>Column 1 has <code>offset</code> set to <code>"4"</code></b>
         <ion-grid>
           <ion-row>
             <ion-col push-sm="6">
-              <ion-item>
-                <ion-label position="stacked">Occasione</ion-label>
-                <ion-select formControlName="occasion">
-                  <ion-select-option value="Compleanno"
-                    >🎉 Compleanno</ion-select-option
-                  >
-                  <ion-select-option value="Cena di lavoro"
-                    >💼 Cena di lavoro</ion-select-option
-                  >
-                  <ion-select-option value="Laurea"
-                    >🎓 Laurea</ion-select-option
-                  >
-                </ion-select>
-              </ion-item>
+              <!-- vuoto -->
             </ion-col>
-            <ion-col pull-sm="6"
-              ><!-- Intolleranze  -->
-              <ion-item>
-                <ion-label position="stacked">Intolleranze</ion-label>
-                <ion-textarea
-                  formControlName="intolerances"
-                  placeholder="Es. lattosio"
-                ></ion-textarea> </ion-item
-            ></ion-col>
+            <ion-col pull-sm="6">
+              <!-- vuoto -->
+            </ion-col>
           </ion-row>
         </ion-grid>
 
-        <!-- Selezione stanza -->
-        <ion-row *ngIf="rooms.length > 0">
-          <ion-col size="12" size-md="6">
-            <ion-item>
-              <ion-label position="stacked">Stanza</ion-label>
-              <ion-select
-                formControlName="room_id"
-                placeholder="Seleziona stanza"
-              >
-                <ion-select-option *ngFor="let r of rooms" [value]="r.id">
-                  🏠 {{ r.name }} ({{ r.seats }} posti)
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-col>
-        </ion-row>
+
         <!-- Bottone submit -->
         <ion-row>
           <ion-col size="12">

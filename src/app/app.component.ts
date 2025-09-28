@@ -46,6 +46,7 @@ import { UserService } from "./providers/user.service";
 
 @Component({
   selector: "app-root",
+  standalone: true,
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
   imports: [

@@ -1,15 +1,20 @@
+import { environment } from "./../../environments/environment";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Reservation } from "../models/reservation.model";
+
 // import { API_BASE_URL } from "../../config";
 
 @Injectable({ providedIn: "root" })
 export class ReservationService {
-  //   private baseUrl = `${API_BASE_URL}/reservations`;
-  API_BASE_URL = "https://dev.endriazizi.com/api/v1";
+  // private apiUrl = environment.apiUrl;
+  //   private baseUrl = `${apiUrl}/reservations`;
+  // apiUrl = "https://dev.endriazizi.com/api/v1";
+  // apiUrl = "http://localhost:3000/api/v1";
 
-  private baseUrl = `${this.API_BASE_URL}/reservations`;
+  // .post(`${environment.apiUrl}/reservations`, this.form.value)
+  private baseUrl = `${environment.apiUrl}/api/v1/reservations`;
 
   constructor(private http: HttpClient) {}
 
